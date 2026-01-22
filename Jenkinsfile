@@ -1,0 +1,17 @@
+@Library ('jenkins-shared-library') _
+
+def configMap = [
+    project: "roboshop"
+    component: "user"
+]
+
+if( ! env.BRANCH_NAME.equalsIgnoreCase('main') ){ // if not equals to main
+    nodeJSEKSPipeline(configMap) // by default it will call, call function inside this pipeline
+}
+else{
+    echo "Please proceed with PROD process"
+}
+
+//This is a map, NOT a function. ✅
+
+//configMap is a variable that holds a map with keys project and component.
